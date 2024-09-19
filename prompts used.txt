@@ -1,0 +1,20 @@
+1. I want to build a dental clinic app using angular, 
+  which helps to manage patients and the visits made by patients.
+  Each patient visit should recorded with Prescription detail.
+   The user interface must be implemented using Bootstrap.Backend will be
+   simulated using JSON server NPM package.Mention the high level steps to
+    build this app 
+2.I want to build the landing page of this application. In the top there must be a navigation section with brand and login link. Below the navigation bar a banner must be displayed with the clinic name with tag line "Happy Smiles. Delivered"
+3. This application needs to be built in a modular fashion, the navigation section and banner section must be defined as separate components. Moreover he navigation bar must be of dark theme and the link must be in right side corner of the navigation bar. List the steps that needs to be implemented.
+4. The login link in the navigation bar is not aligned to the right side, how to fix this?
+5. I think your suggestion is from older Bootstrap version, Can you recommend the code for Bootstrap 5 version?
+6. At high level, what are the steps to implement login feature
+7. I want to implement the display of login page. what are the steps to be performed
+        share the login html code for login compenent
+8. After implementing the steps specified to display the login page, the login page is not displaying when we click login navigation bar. What could be the reason?
+        the router outlet is missing. how to include it
+
+
+implementing thr Authentication service
+
+1. Provide the steps to implement login() function which gets user data from API "http://localhost:3000/users" and compares the password to decide whether authentication is successful or not.
