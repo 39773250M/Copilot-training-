@@ -15,6 +15,18 @@
         the router outlet is missing. how to include it
 
 
-implementing thr Authentication service
+Implementing thr Authentication service
 
 1. Provide the steps to implement login() function which gets user data from API "http://localhost:3000/users" and compares the password to decide whether authentication is successful or not.
+2. Generate code for user interface with properties ID, Name, Mobile, Password and Type. The user interface class should be placed in nodal folder.
+3. Generate a code which gets user data as user object from the API http://localhost:3000/users using http client
+4. Few corrections are required
+    The base URL of the endpoint must not be hardcoded
+    The query parameter must be mobile instead of username
+    There should be logic to compare the password after receiving the response
+5. The login function must not have the logic to verify the password, instead it should just return the response user array object as an observable, provide modified code based on this expectations
+6. List the modifications that needs to be performed in auth service to store the logged in user object. Include the changes to get logged in user data and login status.
+
+Handle login from submission
+
+1. What are the changes required in login component and login HTML to handle login form submission with display of 'Invalid user/Password" message when credentials are wrong.

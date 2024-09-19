@@ -15,5 +15,15 @@
   ],
   "profile": {
     "name": "typicode"
-  }
+  },
+  "users":[
+    {
+      "id":1,
+      "name":"JohnDoe",
+      "mobile":"1234567890",
+      "password":"pwd",
+      "type": "doctor"
+    }
+  ]
+
 }
