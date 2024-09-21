@@ -1,0 +1,28 @@
+
+<!-- <div *ngif="vpatient.visits.length > 0"> -->
+   
+    <div class="container">
+        <h2>Visits</h2>
+        <div class="row">
+          <div class="col-md-3" *ngFor="let visit of vpatient.visits">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">{{visit.date | date:'MMM dd, yyyy'}}{{visit.time}}</h5>
+                <p class="card-text">{{visit.treatment}}</p>
+                <button class="btn btn-primary" (click)="viewDetails(visit.id)">View Details</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+<!-- <ul>
+    <li *ngFor="let visit of visits">
+      Replace with your actual visit properties
+      <p>{{visit.date}}</p>
+      <p>{{visit.reason}}</p>
+    </li>
+  </ul> -->
+<!-- </div>
+<div *ngif="vpatient.visits.length === 0">
+    <h2>No Visits found</h2>
+</div> -->

@@ -9,6 +9,8 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { BannerComponent } from './banner/banner.component';
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
+import { VisitsComponent } from './visits/visits.component';
+import { VisitDetailsComponent } from './visit-details/visit-details.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { HttpClientModule } from '@angular/common/http';
     LandingPageComponent,
     NavigationComponent,
     BannerComponent,
-    LoginComponent
+    LoginComponent,
+    VisitsComponent,
+    VisitDetailsComponent
   ],
   imports: [
     BrowserModule,

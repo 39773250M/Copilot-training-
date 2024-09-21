@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { Router } from '@angular/router';
 
 import { AuthService } from '../../services/auth/auth.service'; // Import the AuthService
 import { Inject } from '@angular/core';
@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   errorMessage: string = '';
   loginSuccess: string = '';
 
-  constructor( private authService: AuthService, private fb: FormBuilder) {
+  constructor( private authService: AuthService, private fb: FormBuilder, private router: Router) {
     this.loginForm = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
@@ -36,11 +36,12 @@ export class LoginComponent implements OnInit {
     console.log('Login check', username + ' pwd:' + password);
 
     this.authService.login(username, password).subscribe(
-      (users: any[]) => {
-        if (users.length > 0 && users[0].password === password) {
+      (user) => {
+        if (user && user.password === password) {
           // Handle successful login
           console.log('Login successful');
           this.loginSuccess = 'Login successful';
+          this.router.navigate(['/visits']);
         } else {
           this.errorMessage = 'Invalid username/password';
           console.log('Invalid username/password');

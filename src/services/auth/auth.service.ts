@@ -17,15 +17,15 @@ export class AuthService {
   login(username: string, password: string): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}?username=${username}`).pipe(
       map((users: any[]) => {
-        console.log('Login successful 00', users);
-        if (users.length > 0 && users[0].password === password) {
+        for (let user of users) {
+        //console.log('Login successful 00', users);
+        if (user.username === username && user.password === password) {
           console.log('Login successful 11');
           this.loggedIn = true;
-          this.currentUser = users[0];
-          return users;
-        } else {
-          throw new Error('Invalid username/password');
-        }
+          this.currentUser = user;
+          return user;
+        } 
+      }
       })
     );
   }

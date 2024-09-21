@@ -1,0 +1,54 @@
+<!-- <div *ngif="visit">
+<h1>Visit Details</h1>
+<p>Date: {{visit.date | date:'MMM dd, yyyy'}}</p>
+<p>Time: {{visit.time}}</p>
+<p>Treatment: {{visit.treatment}}</p>
+<p>Patient: {{patient.name}}</p>
+<p>Doctor: {{doctor.name}}</p>
+</div> -->
+
+<div class="container">
+    <h2>Visit Details</h2>
+    <div class="row">
+        <div class="col-md-3" *ngFor="let visit of vpatient.visits">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"></h5>
+                    <p class="card-text"></p>
+                    <p><strong>Doctor Name:</strong> </p>
+                    <p><strong>Patient Name:</strong> </p>
+                    <p><strong>Symptoms:</strong> </p>
+                    <!-- <p><strong>Treatment:</strong> {{visit.treatment}}</p> -->
+                    <button class="btn btn-primary" >View Details</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                
+   
+  
+    <h3>Prescribed Medicine</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Medicine Name</th>
+          <th>Dosage</th>
+          <th>After Meal</th>
+          <th>Duration Date</th>
+          <th>Advice</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- <tr *ngFor="let medicine of visit.prescribedMedicine">
+          <td>{{medicine.name}}</td>
+          <td>{{medicine.dosage}}</td>
+          <td>{{medicine.afterMeal ? 'Yes' : 'No'}}</td>
+          <td>{{medicine.durationDate | date:'MMM dd, yyyy'}}</td>
+          <td>{{medicine.advice}}</td>
+        </tr> -->
+      </tbody>
+    </table>
+  
+    <p><strong>Advice to Patient:</strong> </p>
+  </div>

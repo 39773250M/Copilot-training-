@@ -1,28 +1,196 @@
 {
-  "posts": [
+  "users": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "role": "receptionist",
+      "username": "receptionist1",
+      "password": "password"
+    },
+    {
+      "id": 2,
+      "role": "receptionist",
+      "username": "receptionist2",
+      "password": "password"
+    },
+    {
+      "id": 3,
+      "role": "doctor",
+      "username": "doctor1",
+      "password": "password"
+    },
+    {
+      "id": 4,
+      "role": "doctor",
+      "username": "doctor2",
+      "password": "password"
+    },
+    {
+      "id": 5,
+      "role": "doctor",
+      "username": "doctor3",
+      "password": "password"
+    },
+    {
+      "id": 6,
+      "role": "doctor",
+      "username": "doctor4",
+      "password": "password"
+    },
+    {
+      "id": 7,
+      "role": "doctor",
+      "username": "doctor5",
+      "password": "password"
     }
   ],
-  "comments": [
+  "patients": [
     {
       "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
-  "profile": {
-    "name": "typicode"
-  },
-  "users":[
+      "mobileNumber": "1234567890",
+      "name": "Alice",
+      "visits": [
+        {
+          "id": 1,
+          "date": "2022-01-01",
+          "time": "10:00 AM",
+          "condition": "Flu",
+          "treatment": "Rest and hydration",
+          "notes": "Patient should rest for a few days",
+          "prescriptions": [
+            {
+              "medicineName": "Paracetamol",
+              "dosage": "500mg",
+              "medicineCount": 10
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "date": "2022-02-01",
+          "time": "2:00 PM", 
+          "condition": "Headache",
+          "treatment": "Rest and painkillers",
+          "notes": "Patient should avoid bright lights",
+          "prescriptions": [
+            {
+              "medicineName": "Ibuprofen",
+              "dosage": "200mg",
+              "medicineCount": 10
+            }
+          ]
+        }
+      ]
+    },
     {
-      "id":1,
-      "name":"JohnDoe",
-      "mobile":"1234567890",
-      "password":"pwd",
-      "type": "doctor"
+      "id": 2,
+      "mobileNumber": "2345678901",
+      "name": "Bob",
+      "visits": [
+        {
+          "id": 1,
+          "date": "2022-01-01",
+          "time": "2:00 PM", 
+          "condition": "Flu",
+          "treatment": "Rest and hydration",
+          "notes": "Patient should rest for a few days",
+          "prescriptions": [
+            {
+              "medicineName": "Paracetamol",
+              "dosage": "500mg",
+              "medicineCount": 10
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "date": "2022-02-01",
+          "time": "4:00 PM", 
+          "condition": "Headache",
+          "treatment": "Rest and painkillers",
+          "notes": "Patient should avoid bright lights",
+          "prescriptions": [
+            {
+              "medicineName": "Ibuprofen",
+              "dosage": "200mg",
+              "medicineCount": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "mobileNumber": "3456789012",
+      "name": "Charlie",
+      "visits": [
+        {
+          "id": 1,
+          "date": "2022-01-01",
+          "time": "6:00 PM", 
+          "condition": "Flu",
+          "treatment": "Rest and hydration",
+          "notes": "Patient should rest for a few days",
+          "prescriptions": [
+            {
+              "medicineName": "Paracetamol",
+              "dosage": "500mg",
+              "medicineCount": 10
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "date": "2022-02-01",
+          "time": "8:00 PM", 
+          "condition": "Headache",
+          "treatment": "Rest and painkillers",
+          "notes": "Patient should avoid bright lights",
+          "prescriptions": [
+            {
+              "medicineName": "Ibuprofen",
+              "dosage": "200mg",
+              "medicineCount": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "mobileNumber": "4567890123",
+      "name": "David",
+      "visits": [
+        {
+          "id": 1,
+          "date": "2022-01-01",
+          "time": "1:00 PM", 
+          "condition": "Flu",
+          "treatment": "Rest and hydration",
+          "notes": "Patient should rest for a few days",
+          "prescriptions": [
+            {
+              "medicineName": "Paracetamol",
+              "dosage": "500mg",
+              "medicineCount": 10
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "date": "2022-02-01",
+          "time": "2:00 PM", 
+          "condition": "Headache",
+          "treatment": "Rest and painkillers",
+          "notes": "Patient should avoid bright lights",
+          "prescriptions": [
+            {
+              "medicineName": "Ibuprofen",
+              "dosage": "200mg",
+              "medicineCount": 10
+            }
+          ]
+        }
+      ]
     }
   ]
 
