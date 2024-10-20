@@ -27,7 +27,7 @@ export class VisitsComponent implements OnInit {
   constructor(private patientService: PatientsService,private visitsService: VisitsService, private router: Router, private usersService:UsersService) { }
 
   ngOnInit(): void {
-    const patientId = '3'; // Replace with the actual patient ID
+    const patientId = 3; // Replace with the actual patient ID
     this.patientService.getPatient(patientId).subscribe( // here we need to get the patient detials
       (user: any) => {
         this.user = user;

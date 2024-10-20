@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { ReactiveFormsModule } from '@angular/forms';
+// import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule , FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
@@ -11,6 +11,9 @@ import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { VisitsComponent } from './visits/visits.component';
 import { VisitDetailsComponent } from './visit-details/visit-details.component';
+import { PatientComponent } from './patient/patient.component';
+import { PatientRegistrationComponent } from './patient-registration/patient-registration.component';
+import { AddVisitComponent } from './add-visit/add-visit.component';
 
 @NgModule({
   declarations: [
@@ -20,13 +23,18 @@ import { VisitDetailsComponent } from './visit-details/visit-details.component';
     BannerComponent,
     LoginComponent,
     VisitsComponent,
-    VisitDetailsComponent
+    VisitDetailsComponent,
+    PatientComponent,
+    PatientRegistrationComponent,
+    AddVisitComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    
   ],
   providers: [
     

@@ -10,8 +10,14 @@ export class VisitsService {
 
   constructor(private http: HttpClient) { }
 
-  getVisits(patientId: string): Observable<any> {
+  getVisits(patientId: number): Observable<any> {
     const url = `${this.apiUrl}${patientId}`;
     return this.http.get<any>(url);
+  }
+  getVisitDetails(visitId: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/${visitId}`);
+  }
+  addVisit(visitData: any): Observable<any> {
+    return this.http.post<any>(this.apiUrl, visitData);
   }
 }

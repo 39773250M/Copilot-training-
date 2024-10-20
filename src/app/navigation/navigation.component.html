@@ -1,21 +1,66 @@
 
 
 <!-- Dark Themed Navigation Bar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Your Brand</a>
+<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">MMS Hospital</a>
     <div class="collapse navbar-collapse">
         <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-                <a class="nav-link" routerLink="/visits" routerLinkActive="active">Visits</a>
+                <a *ngIf="authService.isLoggedIn()" class="nav-link" routerLink="/visits" routerLinkActive="active">Visits</a>
             </li>
+            Other menu links
+    <li class="nav-item">
+        <a *ngIf="authService.isLoggedIn()" class="nav-link" routerLink="/patient">Patient</a>
+      </li>
             <li class="nav-item">
-                <!-- <a class="nav-link" [routerLink]="['/login']">Login</a> -->
+                <a class="nav-link" [routerLink]="['/login']">Login</a>
                 <a class="nav-link" *ngIf="!authService.isLoggedIn()" routerLink="/login">Login</a>
-                <span class="white" *ngIf="authService.isLoggedIn()">
-                    <span  class="white">Welcome, {{authService.getCurrentUser().username}}</span>
+                <span class="white" *ngIf="authService.isLoggedIn()"> 
+                    <span  class="white">Welcome, {{ currentUser}}</span>
                   <a class="nav-link" routerLink="/logout" (click)="onLogout()">   Logout</a>
                 </span>
+                Include menu link for patient to be displayed only for Receptionist and press enter 
             </li>
+        </ul>
+    </div>
+</nav> -->
+
+
+<!-- Dark Themed Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">MMS Hospital</a>
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+                <a *ngIf="authService.isLoggedIn()" class="nav-link" routerLink="/visits" routerLinkActive="active">Visits</a>
+            </li>
+            <li class="nav-item">
+                <a *ngIf="authService.isLoggedIn()" class="nav-link" routerLink="/patient" routerLinkActive="active">Patient</a>
+            </li>
+            <li class="nav-item">
+                <a *ngIf="authService.isLoggedIn()"  class="nav-link Register New Patient" routerLink="/register-patient" routerLinkActive="active">Register New Patient</a>
+            </li>
+            <li class="nav-item" *ngIf="isDoctor()">
+                <a class="nav-link" routerLink="/add-visit">Add Visit</a>
+              </li>
+            <!-- Other menu links -->
+            <li class="nav-item">
+                <a class="nav-link" *ngIf="!authService.isLoggedIn()" routerLink="/login">Login</a>
+                <!-- <span class="white" *ngIf="authService.isLoggedIn()">
+                    <span class="white">Welcome, {{ currentUser }}</span>
+                </span> -->
+            </li>
+            <li class="nav-item">
+               
+                <span class="white" *ngIf="authService.isLoggedIn()">
+                    <span class="white">Welcome, {{ currentUser }}</span>
+                </span>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" *ngIf="authService.isLoggedIn()" (click)="onLogout()" routerLink="/login">Logout</a>
+                
+            </li>
+           
         </ul>
     </div>
 </nav>

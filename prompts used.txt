@@ -30,3 +30,147 @@ Implementing thr Authentication service
 Handle login from submission
 
 1. What are the changes required in login component and login HTML to handle login form submission with display of 'Invalid user/Password" message when credentials are wrong.
+
+Activity 11: Develop feature to find a patient - Use Pair programming feature to Debug the App
+
+1. i want to implement the feature to search and find a patient based on mobile number, how to get this implemented in patient component
+2.The patient data is available in /users API itself having type property value as Patient, in this case what would be the changes required?
+
+Activity 11: Develop feature to find a patient - Use Pair programming feature to Debug the App
+
+1. Prompt to understand the high-level steps.
+
+2. Open the GitHub Copilot Chat window and type following prompt.
+
+I want to implement the feature to search and find a patient based on mobile number, how to get this implemented in patient component
+
+Prompt-Activity Implementation
+
+The above prompt provides results to create a patient service for making backen
+
+call, but our REST API in JSON Server does not have a separate API for patients and
+
+the patient data is available under /users API. To generate code relevant to thi
+
+scenario, the following prompt can be issued, and respective changes suggestec
+
+can be incorporated.
+
+The patient data is available in fusers APt itself having type property value as Patient, in this case what would be the changes required
+
+Prompt-Activity Implementation
+
+
+
+
+
+Incorporate the code provided for user service, patient component class and patient component tint. There may be gopt in the generated code, which can be fixed using troubleshooting pronata In the code generated when enpementing this exercise, fotowing were the gaps found and conected, they are sted below (based on the code generated for
+In the code generated when implementing this exercise, following we found and corrected, they are listed below (based on the code ge you it might vary):
+
+a. In REST API call the search property name was provided as 'mob which was corrected too 'mobile'.
+
+b. The properties in patient component were not initialized, which
+
+compilation error, which was fixed by including an exclamation
+
+after the property name. c. The component html code used ngModel directive for two-w this results in runtime error as forms module is not yet in
+
+app.module.ts. This was corrected by including the forms modul
+
+3. After making the changes, when a valid mobile number is entered and button is clicked, there is no result.
+
+4. To troubleshoot the issue, to verify if the form submission is working, a c was included in the function. Enter the following prompt as an inline com
+
+press enter key.
+
+//Create a method called searchPatient to search for a patient by mobi and display the patient details.
+
+//Add console logs to debug the issue wherever necessary.
+
+
+Activity 14: Register Patient
+
+When the new patient arrives at the clinic. The receptionist must check the existence of the patient in the system by searching based on mobile, which is what we have implemented. If the patient details are not present, then it needs to be registered. In the patient component that we have already implemented, we will have a button to register a new patient, which will display a form to add a new patient.
+
+1. Let us see if this prompt helps in implementing registration of a new patient.
+
+Iwant to implement registration of a new patient. There must be a button named Register New Patient in the top of the patient component. Clicking on it should display a form to capture the name and mobile number. This data must be saved using /users Alt with type stored as patient and default password as "pwd". How to implement this feature?
+
+Prompt-Activity Implementation
+
+2. This prompt generated the steps, but it was providing an implementation where patient registration form was displayed directly in the patient component itself, But let us implement patient registration in a different form, primarily to avoid cluttering in the patient component. The following prompt was provided to get alternate results.
+
+What would be the steps of patent registration form needs to be defined in a separate new component that navigates away from pahent component?
+
+Prompt-Activity Implementation
+
+In this prompt, we have provided additional details on how it should be implemented. The result for the above prompt provided the correct steps. Refer the following points on the steps performed.
+
+3. A new.component was created using 'ng gc register-patient' command.
+
+4. A new route was defined for patient registration
+
+Make register patient component to use reactive forms with basic validations for patient name and mobile number fields.
+
+Also generate code for createliser function in user service
+
+After the receptionist successfully registers a patient, a success message is displayed, the message will remain visible even as the receptionist begins entering new patient details. How to clear this message as receptionist start typing a new patient details?
+
+
+
+
+Activity 15: Implement login for doctor.
+
+When a user logs in as a doctor, we are going to display the patient component. We have already implemented the patient component which helps to find a patient and view the visits. After searching when a patient's information is displayed, a button will be displayed along with the patient details to add a visit. Add Visit will be a new form component, wherein doctor provides the details about the consultation, treatment, and prescription. As part of this activity, we will implement the login feature with just creation of the new component.
+
+1. Open login component diass and modify the condition that checks for receptionist to check also for doctor.
+
+
+We can see that inline suggestion is getting automatically created.
+
+2. Create component for add visit. ng g c add-visit
+
+3. Define route for the component.
+
+The "id" helps to pass the selected patient id to the add visit component.
+
+4. Login as doctor and check if patient component is displayed. Below is the screenshot of the page after successfully login.
+
+Activity 16: Include add visit button.
+
+In the patient component, the add visit button must be included after the patient details. This will help the doctor to add all consultation details of a patient.
+
+Activity 17: Display patient details in add visit page.
+
+After clicking the Add Visit button, the add visit component is currently displayed. In the add visit component, it should display the selected patient details based on the route parameter, which is what we will implement in this activity.
+
+Activity 18: Understand high level steps to implement visit form.
+
+        I'm looking to create a reactive form for documenting patient visits, which will be filled out by the doctor. The form should record symptoms, treatment, advice, and prescriptions. Each prescription entry must include the medicine name, dosage, whether it should be taken after meals, and the duration in days. Additionally, the dosage section should specify whether the medicine is to be taken in the morning, afternoon, or evening. Basic validations are also required for all form fields. How can I implement this?
+
+        2. The above prompt provides the completed code for add visit component class with reactive form, but it was not able to generate the code for html, as the response is quite large, and it fails with an error message before displaying the html code.
+
+FormGroupmune directives to bind the prescriptions form array and prescription form groups to the form
+
+
+Activity 19: Implement component class for add visit without save
+
+In the above response, the component class code is provided, let us make use of it. The following code were included in add-visit.component.ts based on the component class code provided by the previous prompt (each section from the generated code is copied and pasted separately):
+
+Activity 20: Implement component class for add visit form submission.
+
+1. The code generated for component class does not contain the code to save the visit data using REST API. To implement the function to add a visit can be generated using the below prompt.
+
+Create the above function in add-visit.component.ts that constructs a visit obyed and saver it using the visits POST REST APL The function should gather the fokcwing data for the vist object use the logged in user's ID for DoctorID, the patientid from the patient object the current date for date and the coment time in 24-hour hhmni format for time. The remaining fields symptoms, treatment, advice, and prescriptions should be populated from the fore data
+
+Activity 21: Generate HTML part of add visit for symptoms, treatment, and advice.
+
+1. Let us use the below prompt to generate the html part for form fields symptoms, treatment, and advice. Prescription fields will be implemented later.
+
+Assist me in creating the HTML component of add-visit.component.ts'. It should include form fields for symptoms, treatment, and advice, arranged in a grid layout with two rows per column. Additionally, integrate a save button. At this stage, it's only necessary to code for these fields, prescription fields will be incorporated later. Please also include the necessary validation logic to display enor messages when salidation fails
+
+Activity 22: Implement HTML for prescription.
+
+5. The following prompt helps to capture prescription data.
+
+Create code to capture prescription details with the following elements: an "Add" button to introduce a new prescription, and a "Delete" icon alongside each prescription item for removal. Each prescription entry should include a text box for the medicine name. Dosage should be selected using three buttons, with the selected button styled as a Bootstrap primary button and unselected buttons as Bootstrap outline buttons. Similarly, the time of dosage relative to meals should be indicated with two buttons labeled "Before Meals and "After Meals." Lastly, the duratioon of the prescription should be entered in a number input field labeled "Duration Days

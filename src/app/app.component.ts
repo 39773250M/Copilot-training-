@@ -7,5 +7,16 @@ import { RouterOutlet } from '@angular/router';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Pristine32';
+  title = 'MSM Hospital';
+  ngOnInit(): void {
+    this.applyLightTheme();
+  }
+
+  applyLightTheme(): void {
+    const head = document.head;
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'assets/light-theme.css'; // Adjust the path as necessary
+    head.appendChild(link);
+  }
 }

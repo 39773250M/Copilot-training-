@@ -1,0 +1,15 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .grid-item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .error {
+    color: red;
+    font-size: 0.8em;
+  }

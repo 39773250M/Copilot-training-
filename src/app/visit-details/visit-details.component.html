@@ -10,22 +10,25 @@
 <div class="container">
     <h2>Visit Details</h2>
     <div class="row">
+       <p><strong>Doctor Name:</strong>{{this.currentUser}} </p>
         <div class="col-md-3" *ngFor="let visit of vpatient.visits">
+        
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title"></h5>
                     <p class="card-text"></p>
-                    <p><strong>Doctor Name:</strong> </p>
-                    <p><strong>Patient Name:</strong> </p>
-                    <p><strong>Symptoms:</strong> </p>
-                    <!-- <p><strong>Treatment:</strong> {{visit.treatment}}</p> -->
-                    <button class="btn btn-primary" >View Details</button>
+                   
+                    <p><strong>Patient Name:</strong> {{this.user.name}}</p>
+                    <p><strong>Condition:</strong>{{visit.condition}} </p>
+                    <p><strong>Treatment:</strong> {{visit.treatment}}</p>
+                    <!-- <button class="btn btn-primary" >View Details</button> -->
                 </div>
             </div>
         </div>
     </div>
 
-                
+     <br>
+     <br>           
    
   
     <h3>Prescribed Medicine</h3>
@@ -40,15 +43,21 @@
         </tr>
       </thead>
       <tbody>
-        <!-- <tr *ngFor="let medicine of visit.prescribedMedicine">
-          <td>{{medicine.name}}</td>
+        <tr *ngFor="let visit of vpatient.visits">
+          <ng-container *ngFor="let medicine of visit.prescriptions">
+        
+          <td>{{medicine.medicineName}}</td>
           <td>{{medicine.dosage}}</td>
           <td>{{medicine.afterMeal ? 'Yes' : 'No'}}</td>
           <td>{{medicine.durationDate | date:'MMM dd, yyyy'}}</td>
           <td>{{medicine.advice}}</td>
-        </tr> -->
+    
+      </ng-container>
+    </tr>
       </tbody>
     </table>
   
-    <p><strong>Advice to Patient:</strong> </p>
+   
   </div>
+
+   

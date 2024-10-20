@@ -17,6 +17,10 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   errorMessage: string = '';
   loginSuccess: string = '';
+  username: string = '';
+  password: string = '';
+  
+  loginError: string = '';
 
   constructor( private authService: AuthService, private fb: FormBuilder, private router: Router) {
     this.loginForm = this.fb.group({
@@ -27,6 +31,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     // Add your initialization logic here
+    
   }
 
   onSubmit(): void {
@@ -41,7 +46,11 @@ export class LoginComponent implements OnInit {
           // Handle successful login
           console.log('Login successful');
           this.loginSuccess = 'Login successful';
+          if (user.role === 'receptionist') {
+            this.router.navigate(['/patient']);
+          } else {
           this.router.navigate(['/visits']);
+          }
         } else {
           this.errorMessage = 'Invalid username/password';
           console.log('Invalid username/password');
@@ -52,8 +61,37 @@ export class LoginComponent implements OnInit {
       }
     );
   }
+
+  login(): void {
+    console.log('Login check', this.username + ' pwd:' + this.password);
+
+    this.authService.login(this.username, this.password).subscribe(
+      (user) => {
+        if (user && user.password === this.password) {
+          // Handle successful login
+          console.log('Login successful');
+          this.loginSuccess = 'Login successful';
+          if (user.role === 'patient' ) {
+            this.router.navigate(['/visits']);
+          }
+          if (user.role === 'receptionist' || user.role === 'doctor') {
+            this.router.navigate(['/patient']);
+          }
+        } else {
+          // Handle login error
+          this.loginError = 'Invalid username or password';
+        }
+      },
+      (error) => {
+        console.error('Login error', error);
+        this.loginError = 'An error occurred during login';
+      }
+    );
+  }
 }
 
+//if user type is receptionist, navigate to patient page" and press enter   
+ 
 // import { Component, OnInit } from '@angular/core';
 
 // @Component({

@@ -1,5 +1,5 @@
 {
-  "name": "pristine32",
+  "name": "Murugan Multi Speciality Hospital",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -10,24 +10,24 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "~12.2.0",
-    "@angular/common": "~12.2.0",
-    "@angular/compiler": "~12.2.0",
-    "@angular/core": "~12.2.0",
-    "@angular/forms": "~12.2.0",
-    "@angular/platform-browser": "~12.2.0",
-    "@angular/platform-browser-dynamic": "~12.2.0",
-    "@angular/router": "~12.2.0",
+    "@angular/animations": "^18.2.5",
+    "@angular/common": "^18.2.5",
+    "@angular/compiler": "^18.2.5",
+    "@angular/core": "^18.2.5",
+    "@angular/forms": "^18.2.5",
+    "@angular/platform-browser": "^18.2.5",
+    "@angular/platform-browser-dynamic": "^18.2.5",
+    "@angular/router": "^18.0.0",
     "bootstrap": "^5.3.3",
     "pristine32": "file:",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.11.4"
+    "zone.js": "~0.14.10"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~12.2.18",
-    "@angular/cli": "~12.2.18",
-    "@angular/compiler-cli": "~12.2.0",
+    "@angular-devkit/build-angular": "^18.2.5",
+    "@angular/cli": "^18.2.5",
+    "@angular/compiler-cli": "^18.2.5",
     "@types/jasmine": "~3.8.0",
     "@types/node": "^12.11.1",
     "jasmine-core": "~3.8.0",
@@ -36,7 +36,7 @@
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
-    "typescript": "~4.3.5",
-    "webpack": "^5.94.0"
+    "webpack": "^5.94.0",
+    "webpack-cli": "^4.0.0"
   }
 }

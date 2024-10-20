@@ -4,3 +4,32 @@
 .active {
     color: red;
   }
+  /* Example styles for the navigation bar */
+.navbar {
+    background-color: #343a40; /* Dark background color */
+    padding: 1rem;
+  
+    .navbar-brand {
+      color: #fff;
+      font-size: 1.5rem;
+      &:hover {
+        color: #ccc;
+      }
+    }
+  
+    .navbar-nav {
+      .nav-item {
+        .nav-link {
+          color: #fff;
+          padding: 0.5rem 1rem;
+          &:hover {
+            color: #ccc;
+          }
+          &.active {
+            font-weight: bold;
+            border-bottom: 2px solid #fff;
+          }
+        }
+      }
+    }
+  }

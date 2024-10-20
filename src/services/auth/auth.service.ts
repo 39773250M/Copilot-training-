@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
+import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 
@@ -12,7 +13,7 @@ export class AuthService {
   private currentUser: any;
   private apiUrl = 'http://localhost:3000/users';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private router: Router) { }
 
   login(username: string, password: string): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}?username=${username}`).pipe(
@@ -30,11 +31,13 @@ export class AuthService {
     );
   }
 
-  getCurrentUser(): any {
-    return this.currentUser;
+  getCurrentUser(): Observable<any> {
+    const user = localStorage.getItem('currentUser');
+    return of(user ? JSON.parse(user) : null);
   }
 
   isLoggedIn(): boolean {
+    !!localStorage.getItem('authToken');
     return this.loggedIn;
   }
 
@@ -42,5 +45,17 @@ export class AuthService {
     // Implement your logout logic here
     this.loggedIn = false;
     this.currentUser = null;
+    localStorage.removeItem('authToken');
+    localStorage.removeItem('currentUser');
+    this.router.navigate(['/login']);
   }
+
+  isDoctor(): boolean {
+   
+    if (this.currentUser === "doctor") {
+      return true;
+    }
+    return false;
+  }
+
 }

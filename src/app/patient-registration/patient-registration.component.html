@@ -1,0 +1,33 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card mb-4">
+        <div class="card-body">
+          <h2 class="card-title">Register New Patient</h2>
+          <form [formGroup]="registrationForm" (ngSubmit)="registerPatient()">
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input type="text" id="name" class="form-control" formControlName="name">
+              <div *ngIf="registrationForm.get('name')?.invalid && registrationForm.get('name')?.touched" class="text-danger">
+                <div *ngIf="registrationForm.get('name')?.errors?.required">Name is required.</div>
+                <div *ngIf="registrationForm.get('name')?.errors?.minlength">Name must be at least 2 characters long.</div>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="mobileNumber" class="form-label">Mobile Number</label>
+              <input type="text" id="mobileNumber" class="form-control" formControlName="mobileNumber">
+              <div *ngIf="registrationForm.get('mobileNumber')?.invalid && registrationForm.get('mobileNumber')?.touched" class="text-danger">
+                <div *ngIf="registrationForm.get('mobileNumber')?.errors?.required">Mobile number is required.</div>
+                <div *ngIf="registrationForm.get('mobileNumber')?.errors?.pattern">Mobile number must be 10 digits.</div>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-success" [disabled]="registrationForm.invalid">Register</button>
+          </form>
+          <div *ngIf="successMessage" class="alert alert-success mt-3">
+            {{ successMessage }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -7,13 +7,13 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
-  loggedIn = false; // Add this line
+  loggedIn = false;
 
   constructor(private http: HttpClient) { }
 
-  login(userData: {username: string, password: string}): Observable<any> {
-    return this.http.get(`http://localhost:3000/users?username=${userData.username}`).pipe(
-      map((users: any[]) => { // Update the type of 'users' to 'any[]'
+  login(userData: { username: string, password: string }): Observable<any> {
+    return this.http.get<any[]>(`http://localhost:3000/users?username=${userData.username}`).pipe(
+      map((users: any[]) => {
         const user = users.find(u => u.password === userData.password);
         if (user) {
           this.loggedIn = true;
@@ -26,7 +26,6 @@ export class AuthService {
   }
 
   logout(): void {
-    // Implement your logout logic here
     this.loggedIn = false;
   }
 }

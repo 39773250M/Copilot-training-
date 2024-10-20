@@ -1,0 +1,194 @@
+<h2>Patient Consultation and Treatment Details</h2>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card mb-4">
+        <div class="card-body">
+          <h2 class="card-title">Add Visit</h2>
+          <form [formGroup]="visitForm" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+              <label for="consultation" class="form-label">Consultation</label>
+              <textarea id="consultation" class="form-control" formControlName="consultation" rows="3"></textarea>
+              <div *ngIf="visitForm.get('consultation')?.invalid && visitForm.get('consultation')?.touched" class="text-danger">
+                Consultation is required.
+              </div>
+            </div>
+            <div class="mb-3">
+                <label for="symptoms" class="form-label">Symptoms</label>
+                <textarea id="symptoms" class="form-control" formControlName="symptoms" rows="3"></textarea>
+                <div *ngIf="visitForm.get('symptoms')?.invalid && visitForm.get('symptoms')?.touched" class="text-danger">
+                    Symptoms are required.
+                </div>
+              </div>
+            <div class="mb-3">
+              <label for="treatment" class="form-label">Treatment</label>
+              <textarea id="treatment" class="form-control" formControlName="treatment" rows="3"></textarea>
+              <div *ngIf="visitForm.get('treatment')?.invalid && visitForm.get('treatment')?.touched" class="text-danger">
+                Treatment is required.
+              </div>
+            </div>
+            <div formArrayName="prescriptions" class="container">
+                <div *ngFor="let prescription of prescriptions.controls; let i = index" [formGroupName]="i" class="card mb-3">
+                  <div class="card-body">
+                    <h4 class="card-title">Prescription {{ i + 1 }}</h4>
+                    <div class="form-group">
+                      <label for="medicineName">Medicine Name</label>
+                      <input id="medicineName" formControlName="medicineName" class="form-control" />
+                      <div *ngIf="prescription.get('medicineName')?.invalid && prescription.get('medicineName')?.touched" class="text-danger">
+                        Medicine name is required.
+                      </div>
+                    </div>
+              
+                    <div formGroupName="dosage" class="form-group">
+                      <label>Dosage</label>
+                      <div class="form-check">
+                        <input type="checkbox" formControlName="morning" class="form-check-input" id="morning{{i}}" />
+                        <label class="form-check-label" for="morning{{i}}">Morning</label>
+                      </div>
+                      <div class="form-check">
+                        <input type="checkbox" formControlName="afternoon" class="form-check-input" id="afternoon{{i}}" />
+                        <label class="form-check-label" for="afternoon{{i}}">Afternoon</label>
+                      </div>
+                      <div class="form-check">
+                        <input type="checkbox" formControlName="evening" class="form-check-input" id="evening{{i}}" />
+                        <label class="form-check-label" for="evening{{i}}">Evening</label>
+                      </div>
+                    </div>
+              
+                    <div class="form-group">
+                      <div class="form-check">
+                        <input type="checkbox" formControlName="afterMeals" class="form-check-input" id="afterMeals{{i}}" />
+                        <label class="form-check-label" for="afterMeals{{i}}">After Meals</label>
+                      </div>
+                    </div>
+              
+                    <div class="form-group">
+                      <label for="duration{{i}}">Duration (days)</label>
+                      <input id="duration{{i}}" type="number" formControlName="duration" class="form-control" />
+                      <div *ngIf="prescription.get('duration')?.invalid && prescription.get('duration')?.touched" class="text-danger">
+                        Duration is required and must be at least 1 day.
+                      </div>
+                    </div>
+              
+                    <button type="button" (click)="removePrescription(i)" class="btn btn-danger">Remove Prescription</button>
+                  </div>
+                </div>
+              </div>
+              <button type="button"  class="btn btn-primary" (click)="addPrescription()">Add Prescription</button>
+           
+            <button type="submit" class="btn btn-success" [disabled]="visitForm.invalid">Add Visit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- <div *ngIf="patientDetails">
+    <h2>Patient Details</h2>
+    <p>Name: {{ patientDetails.name }}</p>
+    <p>Mobile Number: {{ patientDetails.mobileNumber }}</p>
+    <p>Condition: {{ patientDetails.condition }}</p>
+
+  </div> -->
+
+  <!-- <form [formGroup]="visitForm" (ngSubmit)="onSubmit()">
+    <div class="grid-container">
+      <div class="grid-item">
+        <label for="symptoms">Symptoms</label>
+        <input id="symptoms" formControlName="symptoms" />
+        <div *ngIf="visitForm.get('symptoms')?.invalid && visitForm.get('symptoms')?.touched" class="error">
+          Symptoms are required.
+        </div>
+      </div>
+  
+      <div class="grid-item">
+        <label for="treatment">Treatment</label>
+        <input id="treatment" formControlName="treatment" />
+        <div *ngIf="visitForm.get('treatment')?.invalid && visitForm.get('treatment')?.touched" class="error">
+          Treatment is required.
+        </div>
+      </div>
+  
+      <div class="grid-item">
+        <label for="advice">Advice</label>
+        <input id="advice" formControlName="advice" />
+        <div *ngIf="visitForm.get('advice')?.invalid && visitForm.get('advice')?.touched" class="error">
+          Advice is required.
+        </div>
+      </div>
+    </div>
+  
+    <div formArrayName="prescriptions">
+      <div *ngFor="let prescription of prescriptions.controls; let i = index" [formGroupName]="i" class="prescription-item">
+        <h4>Prescription {{ i + 1 }}</h4>
+        <div>
+          <label for="medicineName">Medicine Name</label>
+          <input id="medicineName" formControlName="medicineName" />
+          <div *ngIf="prescription.get('medicineName')?.invalid && prescription.get('medicineName')?.touched" class="error">
+            Medicine name is required.
+          </div>
+        </div>
+  
+        <div>
+          <label>Dosage</label>
+          <div class="btn-group" role="group">
+            <button type="button" class="btn" [ngClass]="{'btn-primary': prescription.get('dosage.morning')?.value, 'btn-outline-primary': !prescription.get('dosage.morning')?.value}" (click)="toggleDosage(prescription as FormGroup, 'morning')">Morning</button>
+            <button type="button" class="btn" [ngClass]="{'btn-primary': prescription.get('dosage.afternoon')?.value, 'btn-outline-primary': !prescription.get('dosage.afternoon')?.value}" (click)="toggleDosage(prescription as FormGroup, 'afternoon')">Afternoon</button>
+            <button type="button" class="btn" [ngClass]="{'btn-primary': prescription.get('dosage.evening')?.value, 'btn-outline-primary': !prescription.get('dosage.evening')?.value}" (click)="toggleDosage(prescription as FormGroup, 'evening')">Evening</button>
+          </div>
+        </div>
+  
+        <div>
+          <label>Time of Dosage</label>
+          <div class="btn-group" role="group">
+            <button type="button" class="btn" [ngClass]="{'btn-primary': !prescription.get('afterMeals')?.value, 'btn-outline-primary': prescription.get('afterMeals')?.value}" (click)="toggleMealTime(prescription as FormGroup, false)">Before Meals</button>
+            <button type="button" class="btn" [ngClass]="{'btn-primary': prescription.get('afterMeals')?.value, 'btn-outline-primary': !prescription.get('afterMeals')?.value}" (click)="toggleMealTime(prescription as FormGroup, true)">After Meals</button>
+          </div>
+        </div>
+  
+        <div>
+          <label for="duration">Duration (Days)</label>
+          <input id="duration" type="number" formControlName="duration" />
+          <div *ngIf="prescription.get('duration')?.invalid && prescription.get('duration')?.touched" class="error">
+            Duration is required and must be at least 1 day.
+          </div>
+        </div>
+  
+        <button type="button" (click)="removePrescription(i)" class="btn btn-danger">Delete</button>
+      </div>
+    </div>
+  
+    <button type="button" (click)="addPrescription()" class="btn btn-primary">Add Prescription</button>
+    <button type="submit" class="btn btn-success">Save</button>
+  </form> -->
+  
+  <style>
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+  
+    .grid-item {
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .prescription-item {
+      margin-bottom: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+  
+    .error {
+      color: red;
+      font-size: 0.8em;
+    }
+  
+    .btn-group .btn {
+      margin-right: 5px;
+    }
+  </style>
